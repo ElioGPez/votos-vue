@@ -57,7 +57,7 @@
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1">Cantidad de Votos por Partido Politico</label>
-          <table class="table table-striped">
+          <table class="table table-hover">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Lista</th>
