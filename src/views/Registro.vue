@@ -21,12 +21,12 @@
             :class="{ error: $v.num_votantes.$error }"
           >
           <div v-if="$v.num_votantes.$dirty">
-              <div v-if="!$v.num_votantes.required" class="alert alert-danger" role="alert">
-                <strong>Cuidado!</strong> Este campo es requerido
-              </div>
-              <div v-if="!$v.num_votantes.integer" class="alert alert-danger" role="alert">
-                <strong>Cuidado!</strong> El valor debe ser Entero
-              </div>
+            <div v-if="!$v.num_votantes.required" class="alert alert-danger" role="alert">
+              <strong>Cuidado!</strong> Este campo es requerido
+            </div>
+            <div v-if="!$v.num_votantes.integer" class="alert alert-danger" role="alert">
+              <strong>Cuidado!</strong> El valor debe ser Entero
+            </div>
           </div>
         </div>
         <!-- Input Votos validos -->
@@ -40,12 +40,12 @@
             :class="{ error: $v.votos_validos.$error }"
           >
           <div v-if="$v.votos_validos.$dirty">
-              <div v-if="!$v.votos_validos.required" class="alert alert-danger" role="alert">
-                <strong>Cuidado!</strong> Este campo es requerido
-              </div>
-              <div v-if="!$v.votos_validos.integer" class="alert alert-danger" role="alert">
-                <strong>Cuidado!</strong> El valor debe ser Entero
-              </div>
+            <div v-if="!$v.votos_validos.required" class="alert alert-danger" role="alert">
+              <strong>Cuidado!</strong> Este campo es requerido
+            </div>
+            <div v-if="!$v.votos_validos.integer" class="alert alert-danger" role="alert">
+              <strong>Cuidado!</strong> El valor debe ser Entero
+            </div>
           </div>
         </div>
         <!-- Input Votos nulos -->
@@ -59,12 +59,12 @@
             :class="{ error: $v.votos_nulos.$error }"
           >
           <div v-if="$v.votos_nulos.$dirty">
-              <div v-if="!$v.votos_nulos.required" class="alert alert-danger" role="alert">
-                <strong>Cuidado!</strong> Este campo es requerido
-              </div>
-              <div v-if="!$v.votos_nulos.integer" class="alert alert-danger" role="alert">
-                <strong>Cuidado!</strong> El valor debe ser Entero
-              </div>
+            <div v-if="!$v.votos_nulos.required" class="alert alert-danger" role="alert">
+              <strong>Cuidado!</strong> Este campo es requerido
+            </div>
+            <div v-if="!$v.votos_nulos.integer" class="alert alert-danger" role="alert">
+              <strong>Cuidado!</strong> El valor debe ser Entero
+            </div>
           </div>
         </div>
         <!-- Input Votos en blanco -->
@@ -78,12 +78,12 @@
             :class="{ error: $v.votos_blanco.$error }"
           >
           <div v-if="$v.votos_blanco.$dirty">
-              <div v-if="!$v.votos_blanco.required" class="alert alert-danger" role="alert">
-                <strong>Cuidado!</strong> Este campo es requerido
-              </div>
-              <div v-if="!$v.votos_blanco.integer" class="alert alert-danger" role="alert">
-                <strong>Cuidado!</strong> El valor debe ser Entero
-              </div>
+            <div v-if="!$v.votos_blanco.required" class="alert alert-danger" role="alert">
+              <strong>Cuidado!</strong> Este campo es requerido
+            </div>
+            <div v-if="!$v.votos_blanco.integer" class="alert alert-danger" role="alert">
+              <strong>Cuidado!</strong> El valor debe ser Entero
+            </div>
           </div>
         </div>
 
@@ -102,25 +102,46 @@
                 <th scope="row">123</th>
                 <td>Frente para la Victoria</td>
                 <td>
-                  <input type="number" class="form-control">
+                  <input
+                    v-model="lista_123"
+                    type="number"
+                    class="form-control"
+                    :class="{ error: $v.lista_123.$error }"
+                  >
                 </td>
               </tr>
               <tr>
                 <th scope="row">223</th>
                 <td>Cambiemos</td>
                 <td>
-                  <input type="number" class="form-control">
+                  <input
+                    v-model="lista_223"
+                    type="number"
+                    class="form-control"
+                    :class="{ error: $v.lista_223.$error }"
+                  >
                 </td>
               </tr>
               <tr>
                 <th scope="row">321</th>
                 <td>Partido Renovador</td>
                 <td>
-                  <input type="number" class="form-control">
+                  <input
+                    v-model="lista_321"
+                    type="number"
+                    class="form-control"
+                    :class="{ error: $v.lista_321.$error }"
+                  >
                 </td>
               </tr>
             </tbody>
           </table>
+          <div v-if="$v.lista_321.$dirty || $v.lista_123.$dirty || $v.lista_223.$dirty">
+            <div v-if="!$v.lista_321.required || !$v.lista_123.required || !$v.lista_223.required" class="alert alert-danger" role="alert">
+              <strong>Cuidado!</strong> Debe completar todos los campos
+            </div>
+
+          </div>
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block">
           <b>GUARDAR REGISTRO</b>
@@ -131,7 +152,12 @@
   </div>
 </template>
 <script>
-import { required, minLength, between, integer } from "vuelidate/lib/validators";
+import {
+  required,
+  minLength,
+  between,
+  integer
+} from "vuelidate/lib/validators";
 import Titulo from "@/components/Titulo.vue";
 import Establecimiento from "@/components/Establecimiento.vue";
 
@@ -141,7 +167,10 @@ export default {
       votos_validos: "",
       votos_nulos: "",
       votos_blanco: "",
-      num_votantes: ""
+      num_votantes: "",
+      lista_123: "",
+      lista_223: "",
+      lista_321: ""
     };
   },
   validations: {
@@ -158,6 +187,18 @@ export default {
       integer
     },
     votos_nulos: {
+      required,
+      integer
+    },
+    lista_123: {
+      required,
+      integer
+    },
+    lista_223: {
+      required,
+      integer
+    },
+    lista_321: {
       required,
       integer
     }
@@ -181,7 +222,6 @@ export default {
 </script>
 
 <style>
-
 #subtitulo {
   background-color: rgb(187, 187, 187);
   color: black;
