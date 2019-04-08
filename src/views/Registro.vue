@@ -87,55 +87,62 @@
           </div>
         </div>
 
+        <hr> 
         <div class="form-group">
           <label for="exampleFormControlSelect1">Cantidad de Votos por Partido Politico</label>
-          <table class="table table-hover">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">Lista</th>
-                <th scope="col">Partido</th>
-                <th scope="col">Votos</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">123</th>
-                <td>Frente para la Victoria</td>
-                <td>
+          <fieldset>
+            <div class="" >
+              <table class="table " >
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Lista</th>
+                    <th>Partido</th>
+                    <th >Votos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Lista" class="title">123</td>
+                    <td data-label="Partido">Frente para la victoria</td>
+                    <td data-label="Votos">
                   <input
                     v-model="lista_123"
                     type="number"
                     class="form-control"
                     :class="{ error: $v.lista_123.$error }"
-                  >
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">223</th>
-                <td>Cambiemos</td>
-                <td>
+                  >                    </td>
+                  </tr>
+
+                  <tr>
+                    <td data-label="Lista" class="title">223</td>
+                    <td data-label="Partido">Cambiemos</td>
+                    <td data-label="Votos">
                   <input
                     v-model="lista_223"
                     type="number"
                     class="form-control"
                     :class="{ error: $v.lista_223.$error }"
-                  >
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">321</th>
-                <td>Partido Renovador</td>
-                <td>
+                  >                    </td>
+                  </tr>
+
+                  <tr>
+                    <td data-label="Lista" class="title">321</td>
+                    <td data-label="Partido">Partido Renovador</td>
+                    <td data-label="Votos">
                   <input
                     v-model="lista_321"
                     type="number"
                     class="form-control"
                     :class="{ error: $v.lista_321.$error }"
-                  >
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  >                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+            </div>
+          </fieldset>
+
           <div v-if="$v.lista_321.$dirty || $v.lista_123.$dirty || $v.lista_223.$dirty">
             <div v-if="!$v.lista_321.required || !$v.lista_123.required || !$v.lista_223.required" class="alert alert-danger" role="alert">
               <strong>Cuidado!</strong> Debe completar todos los campos
@@ -247,5 +254,34 @@ input:focus {
 }
 .error-mensaje {
   color: red;
+}
+@media screen and (max-width: 480px){
+  table tr{
+    margin-bottom: 10px;
+    display: block;
+    background-color: rgb(243, 243, 243);
+  }
+  table td{
+    display: block;
+    text-align: right;
+    font-size: 16px;
+  }
+
+  table td:last-child{
+    border-bottom: 0;
+  }
+  table td::before{
+    content: attr(data-label);
+    float: left;
+    font-weight: 600;
+  }
+  table thead{
+    display: none;
+  }
+  .title{
+    background-color: rgb(231, 231, 231);
+    
+    font-weight: bold;
+  }
 }
 </style>
