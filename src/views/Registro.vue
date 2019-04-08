@@ -1,36 +1,7 @@
 <template>
   <div id="cuerpo" class="container">
-    <hr>
-    <div id="titulo">
-      <h2 class="text-center">
-        <b>REGISTRO DE VOTOS</b>
-      </h2>
-    </div>
-    <hr>
-    <div>
-      <h4>Seleccione el Establecimiento</h4>
-    </div>
-      <div class="form-group">
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Escuela N°312</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-    <div>
-      <h4>Seleccione la Mesa</h4>
-    </div>
-      <div class="form-group">
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>Mesa N°12</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
+    <Titulo></Titulo>
+    <Establecimiento></Establecimiento>
     <hr>
     <div class="card">
       <div>
@@ -38,23 +9,84 @@
           <b>Ingrese las cantidades de Votos</b>
         </h4>
       </div>
-      <form class="card-body">
+      <form class="card-body" @submit.prevent="handleSubmit">
+        <!-- Input Votantes -->
         <div class="form-group">
           <label for="exampleFormControlInput1">Cantidad de votantes</label>
-          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder>
+          <input
+            type="number"
+            class="form-control"
+            v-model="num_votantes"
+            @input="$v.num_votantes.$touch()"
+            :class="{ error: $v.num_votantes.$error }"
+          >
+          <div v-if="$v.num_votantes.$dirty">
+              <div v-if="!$v.num_votantes.required" class="alert alert-danger" role="alert">
+                <strong>Cuidado!</strong> Este campo es requerido
+              </div>
+              <div v-if="!$v.num_votantes.integer" class="alert alert-danger" role="alert">
+                <strong>Cuidado!</strong> El valor debe ser Entero
+              </div>
+          </div>
         </div>
+        <!-- Input Votos validos -->
         <div class="form-group">
           <label for="exampleFormControlInput1">Cantidad de votos validos</label>
-          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder>
+          <input
+            type="number"
+            class="form-control"
+            v-model="votos_validos"
+            @input="$v.votos_validos.$touch()"
+            :class="{ error: $v.votos_validos.$error }"
+          >
+          <div v-if="$v.votos_validos.$dirty">
+              <div v-if="!$v.votos_validos.required" class="alert alert-danger" role="alert">
+                <strong>Cuidado!</strong> Este campo es requerido
+              </div>
+              <div v-if="!$v.votos_validos.integer" class="alert alert-danger" role="alert">
+                <strong>Cuidado!</strong> El valor debe ser Entero
+              </div>
+          </div>
         </div>
+        <!-- Input Votos nulos -->
         <div class="form-group">
-          <label for="exampleFormControlInput1">Cantidad de votos nulos</label>
-          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder>
+          <label for="exampleFormControlInput1">Cantidad de votos Nulos</label>
+          <input
+            type="number"
+            class="form-control"
+            v-model="votos_nulos"
+            @input="$v.votos_nulos.$touch()"
+            :class="{ error: $v.votos_nulos.$error }"
+          >
+          <div v-if="$v.votos_nulos.$dirty">
+              <div v-if="!$v.votos_nulos.required" class="alert alert-danger" role="alert">
+                <strong>Cuidado!</strong> Este campo es requerido
+              </div>
+              <div v-if="!$v.votos_nulos.integer" class="alert alert-danger" role="alert">
+                <strong>Cuidado!</strong> El valor debe ser Entero
+              </div>
+          </div>
         </div>
+        <!-- Input Votos en blanco -->
         <div class="form-group">
-          <label for="exampleFormControlInput1">Cantidad de votos en blanco</label>
-          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder>
+          <label for="exampleFormControlInput1">Cantidad de votos en Blanco</label>
+          <input
+            type="number"
+            class="form-control"
+            v-model="votos_blanco"
+            @input="$v.votos_blanco.$touch()"
+            :class="{ error: $v.votos_blanco.$error }"
+          >
+          <div v-if="$v.votos_blanco.$dirty">
+              <div v-if="!$v.votos_blanco.required" class="alert alert-danger" role="alert">
+                <strong>Cuidado!</strong> Este campo es requerido
+              </div>
+              <div v-if="!$v.votos_blanco.integer" class="alert alert-danger" role="alert">
+                <strong>Cuidado!</strong> El valor debe ser Entero
+              </div>
+          </div>
         </div>
+
         <div class="form-group">
           <label for="exampleFormControlSelect1">Cantidad de Votos por Partido Politico</label>
           <table class="table table-hover">
@@ -70,42 +102,86 @@
                 <th scope="row">123</th>
                 <td>Frente para la Victoria</td>
                 <td>
-                    <input type="number" class="form-control">
+                  <input type="number" class="form-control">
                 </td>
               </tr>
               <tr>
                 <th scope="row">223</th>
                 <td>Cambiemos</td>
                 <td>
-                    <input type="number" class="form-control">
+                  <input type="number" class="form-control">
                 </td>
               </tr>
               <tr>
                 <th scope="row">321</th>
                 <td>Partido Renovador</td>
                 <td>
-                    <input type="number" class="form-control">
+                  <input type="number" class="form-control">
                 </td>
               </tr>
             </tbody>
           </table>
-
         </div>
-        <button type="submit" class="btn btn-primary btn-lg btn-block"><b>GUARDAR REGISTRO</b></button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">
+          <b>GUARDAR REGISTRO</b>
+        </button>
       </form>
-    </div> 
-          <br>
+    </div>
+    <br>
   </div>
 </template>
 <script>
-export default {};
+import { required, minLength, between, integer } from "vuelidate/lib/validators";
+import Titulo from "@/components/Titulo.vue";
+import Establecimiento from "@/components/Establecimiento.vue";
+
+export default {
+  data() {
+    return {
+      votos_validos: "",
+      votos_nulos: "",
+      votos_blanco: "",
+      num_votantes: ""
+    };
+  },
+  validations: {
+    votos_validos: {
+      required,
+      integer
+    },
+    num_votantes: {
+      required,
+      integer
+    },
+    votos_blanco: {
+      required,
+      integer
+    },
+    votos_nulos: {
+      required,
+      integer
+    }
+  },
+  components: {
+    Titulo,
+    Establecimiento
+  },
+  methods: {
+    onSubmit() {},
+    handleSubmit(e) {
+      this.submitted = true;
+      // stop here if form is invalid
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      }
+    }
+  }
+};
 </script>
 
 <style>
-/*h2 {
-  background-color: black;
-  color: white;
-}*/
+
 #subtitulo {
   background-color: rgb(187, 187, 187);
   color: black;
@@ -116,14 +192,20 @@ export default {};
 label {
   font-weight: bold;
 }
-h2{
-    background-color:rgb(228, 228, 228);
-      padding: 5px;
+h2 {
+  background-color: rgb(228, 228, 228);
+  padding: 5px;
 }
-/*form{
-    background-color: aliceblue;
-}*/
-#cuerpo{
-        background-color: rgb(247, 247, 247);
+#cuerpo {
+  background-color: rgb(247, 247, 247);
+}
+input:focus {
+  outline: none;
+}
+.error {
+  border: 1px solid red;
+}
+.error-mensaje {
+  color: red;
 }
 </style>
