@@ -18,12 +18,18 @@
       <div class="navbar-collapse collapse" id="ca-navbar" style>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-              <a class="nav-link">Home</a>
+            <router-link to="/registro">
+              <a class="nav-link">Registro de Votos</a>
+            </router-link>
           </li>
           <li class="nav-item">
-              <a class="nav-link">Salir</a>
+            <router-link to="/usuario">
+              <a class="nav-link">Usuarios</a>
+            </router-link>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link">Salir</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -33,6 +39,5 @@
 <script>
 export default {
   name: "nav_mio"
-
 };
 </script>

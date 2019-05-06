@@ -1,6 +1,6 @@
 <template>
   <div>
-    <hr>
+    <br>
     <div id="titulo">
       <h2 class="text-center">
         <b>REGISTRO DE VOTOS</b>

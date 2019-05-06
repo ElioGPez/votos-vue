@@ -97,7 +97,7 @@
                   <tr>
                     <th>Lista</th>
                     <th>Partido</th>
-                    <th >Votos</th>
+                    <th>Votos</th>
                   </tr>
                 </thead>
                 <tbody>
