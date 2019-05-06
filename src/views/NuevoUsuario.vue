@@ -19,13 +19,12 @@
       <form class="card-body" @submit.prevent="handleSubmit">
         <!-- Input Nombre -->
         <div id="input" class="form-group">
-          <label for="exampleFormControlInput1">Nombre</label>
+          <label>Nombre</label>
           <input
             placeholder="Ej. Alberto Luis"
             type="text"
             class="form-control"
             v-model="nombre"
-            @input="$v.nombre.$touch()"
             :class="{ error: $v.nombre.$error }"
           >
           <div v-if="$v.nombre.$dirty">
@@ -42,7 +41,6 @@
             type="text"
             class="form-control"
             v-model="apellido"
-            @input="$v.apellido.$touch()"
             :class="{ error: $v.apellido.$error }"
           >
           <div v-if="$v.apellido.$dirty">
@@ -59,7 +57,6 @@
             type="email"
             class="form-control"
             v-model="email"
-            @input="$v.email.$touch()"
             :class="{ error: $v.email.$error }"
           >
           <div v-if="$v.email.$dirty">
