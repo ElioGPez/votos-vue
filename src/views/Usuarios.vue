@@ -8,7 +8,7 @@
     </div>
     <div class="card">
       <br>
-      <div class="col text-right">
+      <div class="container d-flex flex-row-reverse">
         <router-link to="/usuario/nuevo">
         <a href>
           <button type="button" class="btn btn-primary">

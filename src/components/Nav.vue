@@ -4,12 +4,12 @@
       <!-- Logo -->
       <a class="navbar-brand" href="#">Sistema Votos</a>
       <button
-        class="navbar-toggler collapsed"
+        :class="[navbar]"
         type="button"
         data-toggle="collapse"
         data-target="#ca-navbar"
         aria-controls="ca-navbar"
-        aria-expanded="false"
+        :aria-expanded="expanded"
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Salir</a>
+            <a @click="normal" class="nav-link">Salir</a>
           </li>
         </ul>
       </div>
@@ -38,6 +38,18 @@
 
 <script>
 export default {
-  name: "nav_mio"
+  name: "nav_mio",
+  data() {
+    return {
+      expanded : "false",
+      navbar : "navbar-toggler collapsed show"
+    }
+  },
+  methods: {
+    normal(){
+      this.navbar = "navbar-toggler collapsed"
+      this.expanded = "false";
+    }
+  },
 };
 </script>
