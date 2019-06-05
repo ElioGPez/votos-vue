@@ -37,9 +37,24 @@ export default new Router({
       component: () => import(/* webpackChunkName: "registro" */ './views/NuevoUsuario.vue')
     },
     {
+      path: '/usuario/modificar',
+      name: 'modificar',
+      component: () => import(/* webpackChunkName: "registro" */ './views/ModificarUsuario.vue')
+    },
+    {
+      path: '/usuario/info',
+      name: 'info',
+      component: () => import(/* webpackChunkName: "registro" */ './views/Usuario.vue')
+    },
+    {
       path: '/informe',
       name: 'informe',
       component: () => import(/* webpackChunkName: "registro" */ './views/Informe.vue')
+    },
+    {
+      path: '/panel',
+      name: 'panel',
+      component: () => import(/* webpackChunkName: "registro" */ './views/Panel.vue')
     }
   ]
 })

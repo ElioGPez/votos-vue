@@ -18,6 +18,11 @@
       <div class="navbar-collapse collapse" id="ca-navbar" style>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
+            <router-link to="/panel">
+              <a class="nav-link">Panel</a>
+            </router-link>
+          </li>
+          <li class="nav-item">
             <router-link to="/informe">
               <a class="nav-link">Informe</a>
             </router-link>

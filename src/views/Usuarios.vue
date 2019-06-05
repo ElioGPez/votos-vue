@@ -33,46 +33,54 @@
               </thead>
               <tbody>
                 <tr>
-                  <td data-label="nombre" class="title">Jose</td>
-                  <td data-label="apellido">Perez</td>
-                  <td data-label="email">perez@gmail.com</td>
-                  <td data-label="celular">381625897</td>
-                  <td data-label="acciones">
+                  <td data-label="Nombre" class="title">Jose</td>
+                  <td data-label="Apellido">Perez</td>
+                  <td data-label="Email">perez@gmail.com</td>
+                  <td data-label="Celular">381625897</td>
+                  <td data-label="Acciones">
                     <a href>
+                      <router-link to="/usuario/info">
                       <button class="btn btn-primary">
                         <i class="fas fa-info-circle"></i>
                       </button>
+                      </router-link>
                     </a>
                     <a href>
+                      <router-link to="/usuario/modificar">
                       <button class="btn btn-warning">
-                        <i class="fas fa-user-edit"></i>
-                      </button>
+                        <i class="far fa-edit"></i>
+                      </button>        
+                      </router-link>
                     </a>
                     <a href>
-                      <button class="btn btn-danger">
+                      <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" @click.prevent="eliminarUsuario()">
                         <i class="fas fa-trash-alt"></i>
                       </button>
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td data-label="nombre" class="title">Jose</td>
-                  <td data-label="apellido">Perez</td>
-                  <td data-label="email">perez@gmail.com</td>
-                  <td data-label="celular">381625897</td>
-                  <td data-label="acciones">
+                  <td data-label="Nombre" class="title">Jose</td>
+                  <td data-label="Apellido">Perez</td>
+                  <td data-label="Email">perez@gmail.com</td>
+                  <td data-label="Celular">381625897</td>
+                  <td data-label="Acciones">
                     <a href>
+                      <router-link to="/usuario/info">
                       <button class="btn btn-primary">
                         <i class="fas fa-info-circle"></i>
                       </button>
+                      </router-link>
                     </a>
                     <a href>
+                      <router-link to="/usuario/modificar">
                       <button class="btn btn-warning">
-                        <i class="fas fa-user-edit"></i>
-                      </button>
+                        <i class="far fa-edit"></i>
+                      </button>        
+                      </router-link>
                     </a>
                     <a href>
-                      <button class="btn btn-danger">
+                      <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" @click.prevent="eliminarUsuario()">
                         <i class="fas fa-trash-alt"></i>
                       </button>
                     </a>
@@ -87,13 +95,45 @@
       
     </div>
                                   <br>
+                                  <!-- Modal ELIMMINAR-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">MENSAJE DE CONFIRMACION</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div style="text-align:center" class="modal-body">
+        Esta seguro que desea eliminar al Usuario {{nombre}}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger">CONFIRMAR ELIMINACION</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   </div>
 </template>
 
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      nombre : ""
+    }
+
+  },    
+  methods: {
+      eliminarUsuario(){
+        
+      }
+    },
+};
 </script>
 
 <style>

@@ -152,13 +152,14 @@
         </fieldset>
       </div>
           <!-- Tabla Intendente -->
-      <div 
+
+                <div 
       
       class="container"
-      :id="intendente"
+      :id="legislador"
       >
         <fieldset>
-            <label for="">Intendente</label>
+            <label for="">Legislador</label>
           <div class>
             <table class="table table-striped">
               <thead class="thead-dark">
@@ -189,6 +190,37 @@
                   <td data-label="apellido">t</td>
                   <td data-label="email">100</td>
                 </tr>
+              </tbody>
+            </table>
+          </div>
+        </fieldset>
+      </div>
+          <!-- Tabla Intendente -->
+      <div 
+      
+      class="container"
+      >
+        <fieldset>
+            <label for="">Mesas</label>
+          <div class>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Secciones</th>
+                  <th>Departamento</th>
+                  <th>Localidad</th>
+                  <th>Escuela</th>
+                  <th>Nº</th>
+                  <th>Usuario</th>
+                  <th>Fecha</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+
+                </tr>
+
               </tbody>
             </table>
           </div>
