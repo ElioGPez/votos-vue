@@ -21,7 +21,7 @@
       <div class="container">
         <fieldset>
           <div class>
-            <table class="table table-striped">
+            <table class="table">
               <thead class="thead-dark">
                 <tr>
                   <th>Nombre</th>
@@ -171,7 +171,11 @@ input:focus {
 .table tr {
   text-align: center;
 }
-@media screen and (max-width: 480px) {
+  fieldset div {
+    background-color: white;
+    text-align: center;
+  }
+@media screen and (max-width: 760px) {
   table tr {
     margin-bottom: 10px;
     display: block;
